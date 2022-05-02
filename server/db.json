@@ -1,0 +1,70 @@
+{
+    "contacts":[
+      {
+        "id":1,
+        "name":"irakoze",
+        "mobile": "0025761193884",
+        "title":"Programmer",
+        "email":"Chrisirak95@gmail.com",
+        "company": "IBI Africa",
+        "groupId":"1",
+        "photo": "https://cdn.fakercloud.com/avatars/andysolomon_128.jpg"
+      },
+      {
+        "id":2,
+        "name":"Mukiza",
+        "mobile": "00257611989343",
+        "title":"Programmer",
+        "email":"douceIrak33@gmail.com",
+        "company": "MediaBox",
+        "groupId":"1",
+        "photo": "https://cdn.fakercloud.com/avatars/victor_haydin_128.jpg"
+      },
+      {
+        "id":3,
+        "name":"Gikundiro",
+        "mobile": "002576145434",
+        "title":"Programmer",
+        "email":"gikunirak43@gmail.com",
+        "company": "ASYST",
+        "groupId":"1",
+        "photo": "https://cdn.fakercloud.com/avatars/cocolero_128.jpg"
+      },
+      {
+        "id":4,
+        "name":"Mwamba",
+        "mobile": "004556541193884",
+        "title":"Programmer",
+        "email":"mwafoak95@gmail.com",
+        "company": "IBI Africa",
+        "groupId":"1",
+        "photo": "https://cdn.fakercloud.com/avatars/victor_haydin_128.jpg"
+      }
+    ],
+    "groups":[
+      {
+        "id":"1",
+        "name": "Family"
+      },
+      {
+        "id":"2",
+        "name": "Friends"
+      }
+      ,
+      {
+        "id":"3",
+        "name": "Collegue"
+      },
+      {
+        "id":"4",
+        "name": "Social"
+      },
+      {
+        "id":"5",
+        "name": "Community"
+      },
+      {
+
+      }
+    ]
+}
