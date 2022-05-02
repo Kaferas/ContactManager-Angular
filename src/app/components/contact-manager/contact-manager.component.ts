@@ -13,6 +13,7 @@ export class ContactManagerComponent implements OnInit {
   loading:boolean=false;
   errorMessage:string=""
   contacts: IContact[]=[];
+  oldContacts:string=""
 
   constructor(private contactService:ContactService,
               private router: Router) { }
@@ -25,6 +26,7 @@ export class ContactManagerComponent implements OnInit {
     this.loading=true;
     this.contactService.getAllContacts().subscribe((data)=>{
       this.contacts=data;
+      this.oldContacts=JSON.stringify(data);
       setTimeout(()=>{
           this.loading=false;
       },1300)
@@ -45,6 +47,21 @@ export class ContactManagerComponent implements OnInit {
     },(error)=>{
       this.errorMessage=error;
     })
+  }
+
+  searchContact(event:any){
+    let keyword=event.target.value
+    var result=JSON.parse(this.oldContacts).filter((contact:IContact)=>{
+      console.log(contact.name,keyword)
+      return contact.name.toLowerCase().includes(keyword.toLowerCase()) || contact.mobile.includes(keyword);
+    })
+    if(keyword.length > 0){
+      console.log(result)
+      this.contacts=result
+    }
+    else{
+      this.getAllContactsFromServer();
+      }
   }
 
 }
