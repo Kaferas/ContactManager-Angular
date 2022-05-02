@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IContact } from 'src/app/models/IContact';
 import { ContactService } from 'src/app/services/contact.service';
 
@@ -13,9 +14,14 @@ export class ContactManagerComponent implements OnInit {
   errorMessage:string=""
   contacts: IContact[]=[];
 
-  constructor(private contactService:ContactService) { }
+  constructor(private contactService:ContactService,
+              private router: Router) { }
 
   ngOnInit(): void {
+    this.getAllContactsFromServer()
+  }
+
+  getAllContactsFromServer(){
     this.loading=true;
     this.contactService.getAllContacts().subscribe((data)=>{
       this.contacts=data;
@@ -25,6 +31,19 @@ export class ContactManagerComponent implements OnInit {
     },(error)=>{
       this.errorMessage=error
       this.loading=false;
+    })
+  }
+
+  eraseContact(contactId:string | undefined){
+    this.loading=true;
+    if(contactId)
+    this.contactService.deleteContact(contactId).subscribe((data)=>{
+      setTimeout(()=>{
+        this.loading=false;
+      },1300)
+      this.getAllContactsFromServer()
+    },(error)=>{
+      this.errorMessage=error;
     })
   }
 

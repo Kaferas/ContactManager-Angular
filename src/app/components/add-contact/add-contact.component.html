@@ -12,38 +12,61 @@
 <div class="container mt-2">
 <div class="row">
   <div class="col-sm-7 col-md-5">
-    <form action="">
+    <form #form="ngForm" (ngSubmit)="submitContact(form)">
       <div class="mb-2">
-        <input type="text" placeholder="Name" class="form-control">
+        <input required ngModel name="name" type="text" #name="ngModel" placeholder="Name" class="form-control">
+      </div>
+      <div class="alert alert-danger" *ngIf="!name.valid && name.touched">
+        The name is Required
       </div>
       <div class="mb-2">
-        <input type="text" placeholder="Photo URL" class="form-control">
+        <input type="text" required ngModel name="photo" #photo="ngModel" placeholder="Photo URL" class="form-control">
+      </div>
+      <div class="alert alert-danger" *ngIf="!photo.valid && photo.touched">
+        Photo URL is required
       </div>
       <div class="mb-2">
-        <input type="email`" placeholder="Email" class="form-control">
+        <input type="email" required ngModel name="email" #email="ngModel" placeholder="Email" class="form-control">
+      </div>
+      <div class="alert alert-danger" *ngIf="!email.valid && email.touched">
+        Email is required
       </div>
       <div class="mb-2">
-        <input type="number" placeholder="Mobile Number" class="form-control">
+        <input type="text" required ngModel name="mobile" #number="ngModel" placeholder="Mobile Number" class="form-control">
+      </div>
+      <div class="alert alert-danger" *ngIf="!number.valid && number.touched">
+        Mobile Number is Required
       </div>
       <div class="mb-2">
-        <input type="text" placeholder="Company" class="form-control">
+        <input type="text" name="company" required ngModel placeholder="Company" #company="ngModel" class="form-control">
+      </div>
+      <div class="alert alert-danger" *ngIf="!company.valid && company.touched">
+        Company is required
       </div>
       <div class="mb-2">
-        <input type="text" placeholder="title" class="form-control">
+        <input type="text" name="title" required ngModel placeholder="Title" #title="ngModel" class="form-control">
+      </div>
+      <div class="alert alert-danger" *ngIf="!title.valid && title.touched">
+        Title is Required
       </div>
       <div class="mb-2">
-        <select name="" id="" class="form-control">
+        <select reuired name="groupId" #categorie="ngModel" ngModel class="form-control" *ngIf="groups.length > 0" >
           <option value="">Select a Group</option>
+          <option [value]="group.id" *ngFor="let group of groups">{{group.name}}</option>
         </select>
       </div>
+      <!-- <div class="alert alert-danger" *ngIf="!categorie.valid && categorie.touched">
+        The Group is required
+      </div> -->
       <div class="mt-4 d-flex justify-content-between">
-        <input type="submit" value="Create" class="btn btn-primary form-control">
+        <input [disabled]="!form.valid" type="submit" value="Create" class="btn btn-primary form-control">
         <a routerLink="/" class="btn btn-dark ms-3">Close</a>
       </div>
     </form>
   </div>
   <div class="col-sm-4">
     <img src="http://assets.stickpng.com/images/585e4bcdcb11b227491c3396.png" alt="" class="contact-img" alt="Grabbed image">
+    <!-- <pre>{{form.value|json }}</pre> -->
   </div>
 </div>
 </div>

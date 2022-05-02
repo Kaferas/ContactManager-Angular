@@ -8,19 +8,33 @@
     </div>
   </div>
 </div>
-<div class="container mt-3">
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf="!loading && errorMessage">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="h2 text-danger fw-bold">
+          {{errorMessage}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-3" *ngIf="!loading && notEmpty()">
   <div class="row">
     <div class="col-sm-4 col-md-4">
-        <img src="" alt="">
+        <img [src]="currentContact.photo" alt="">
     </div>
     <div class="col-sm-6 col-md-8">
       <ul class="list-group">
-        <li class="list-group-item list-group-item-primary">Name: <span class="fw-bold">Name</span></li>
-        <li class="list-group-item list-group-item-primary">Email: <span class="fw-bold">Email</span></li>
-        <li class="list-group-item list-group-item-primary">Mobile: <span class="fw-bold">Mobile</span></li>
-        <li class="list-group-item list-group-item-primary">Company: <span class="fw-bold">Company </span></li>
-        <li class="list-group-item list-group-item-primary">Title: <span class="fw-bold">Title</span></li>
-        <li class="list-group-item list-group-item-primary">Group: <span class="fw-bold">Group</span></li>
+        <li class="list-group-item list-group-item-primary">Name: <span class="fw-bold">{{currentContact.name}}</span></li>
+        <li class="list-group-item list-group-item-primary">Email: <span class="fw-bold">{{currentContact.email}}</span></li>
+        <li class="list-group-item list-group-item-primary">Mobile: <span class="fw-bold">{{currentContact.mobile}}</span></li>
+        <li class="list-group-item list-group-item-primary">Company: <span class="fw-bold">{{currentContact.company}} </span></li>
+        <li class="list-group-item list-group-item-primary">Title: <span class="fw-bold">{{currentContact.title}}</span></li>
+        <li class="list-group-item list-group-item-primary">Group: <span class="fw-bold">{{contactGroup.name}}</span></li>
       </ul>
     </div>
   </div>
