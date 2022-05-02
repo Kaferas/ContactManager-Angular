@@ -1,5 +1,9 @@
 # CrashKnow
 
+First thing first go in thr project directory then go in the server folder run the following command:
+
+npm start to run json-server
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
 ## Development server
